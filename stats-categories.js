@@ -4,11 +4,16 @@ import { calculatePayout } from './server/steemitHelpers';
 import config from './config/config';
 
 function median (values){
+  
+  if(values.length == 1){
+    return values[0];
+  }
+     
   values.sort((a, b) => a - b);
   let lowMiddle = Math.floor((values.length - 1) / 2);
   let highMiddle = Math.ceil((values.length - 1) / 2);
   let m = (values[lowMiddle] + values[highMiddle]) / 2;
-  return m
+  return m;
 }
 
 const mongoose = require('mongoose');
